@@ -8,86 +8,76 @@
     tools:context=".NovelDetail1">
 
     <LinearLayout
+        android:id="@+id/headerLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="start|center"
+        android:background="#D9D9D9"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
 
+        <!-- Back Button -->
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/ayahku" />
+            android:id="@+id/btnBack"
+            android:layout_marginStart="5dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_back" />
 
+        <!-- Title -->
         <TextView
+            android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Ayahku (BUKAN) Pembohong"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            android:gravity="left"
+            android:text="Novel"
+            android:layout_marginStart="20dp"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Rp. 90.000"
-            android:textColor="#FF5722"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Deskripsi:"
-            android:textColor="#000000"
-            android:textSize="16sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit... "
-            android:textColor="#555555"
-            android:textSize="14sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/poppinsbold"
-            android:minHeight="48dp"
-            android:onClick="showFullDescription"
-            android:text="...Lihat Selengkapnya"
-            android:textColor="#007BFF"
-            android:textSize="14sp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:backgroundTint="#00296B"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Tambahkan ke Keranjang"
-            android:textColor="#FFFFFF" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="#FF5722"
-            android:fontFamily="@font/poppinsbold"
-            android:text="Beli Sekarang"
-            android:textColor="#FFFFFF" />
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ivcover"
+        android:layout_width="369dp"
+        android:layout_height="324dp"
+        android:layout_marginTop="23dp"
+        android:src="@drawable/ayahku"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/tvJudul"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="18sp"
+        android:text="Ayahku Bukan Pembohong"
+        app:layout_constraintTop_toBottomOf="@id/ivcover"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="21dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppinsbold"
+        android:textSize="12sp"
+        android:textColor="#8A8080"
+        android:layout_marginStart="21dp"
+        android:text="Ayahku Bukan Pembohong"
+        app:layout_constraintTop_toBottomOf="@id/tvJudul"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="3dp"/>
+
+
+
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
