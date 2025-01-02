@@ -13,6 +13,9 @@
         android:theme="@style/Theme.Readify"
         tools:targetApi="31">
         <activity
+            android:name=".NovelActivity"
+            android:exported="false" />
+        <activity
             android:name=".KeranjangActivity"
             android:exported="false" />
         <activity
@@ -35,9 +38,6 @@
             android:exported="false" />
         <activity
             android:name=".ItemBookActivity"
-            android:exported="false" />
-        <activity
-            android:name=".NovelActivity"
             android:exported="false" />
         <activity
             android:name=".ActivityRegister"
