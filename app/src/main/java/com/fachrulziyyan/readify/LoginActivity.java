@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         builder.setMessage(message)
                 .setPositiveButton("Lanjutkan", (dialog, id) -> {
                     if (navigateToMain) {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, TabActivity.class));
                         finish();
                     }
                     dialog.dismiss();
