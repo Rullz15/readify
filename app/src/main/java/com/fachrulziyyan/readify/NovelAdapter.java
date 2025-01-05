@@ -47,6 +47,7 @@ public class NovelAdapter extends RecyclerView.Adapter<NovelAdapter.NovelViewHol
             intent.putExtra("SUBTITLE", novel.getSubtitle());
             intent.putExtra("PRICE", novel.getPrice());
             intent.putExtra("RATING", novel.getRating());
+            intent.putExtra("DESCRIPTION",novel.getDescription());
             intent.putExtra("IMAGE_RES_ID", novel.getImageResId());
             context.startActivity(intent);
         });
@@ -68,9 +69,6 @@ public class NovelAdapter extends RecyclerView.Adapter<NovelAdapter.NovelViewHol
             tvSubtitle = itemView.findViewById(R.id.tvSubtitle);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvRating = itemView.findViewById(R.id.tvRating);
-
-
         }
-
     }
 }

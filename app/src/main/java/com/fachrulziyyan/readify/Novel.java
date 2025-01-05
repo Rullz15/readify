@@ -6,13 +6,15 @@ public class Novel {
     private String price;
     private String rating;
     private int imageResId;
+    private String description;
 
-    public Novel(String title, String subtitle, String price, String rating, int imageResId) {
+    public Novel(String title, String subtitle, String price, String rating, int imageResId, String description) {
         this.title = title;
         this.subtitle = subtitle;
         this.price = price;
         this.rating = rating;
         this.imageResId = imageResId;
+        this.description = description;
     }
 
     public String getTitle() {
@@ -34,5 +36,6 @@ public class Novel {
     public int getImageResId() {
         return imageResId;
     }
+    public String getDescription(){ return description;}
 }
 
