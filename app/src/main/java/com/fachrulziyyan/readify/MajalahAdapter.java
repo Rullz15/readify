@@ -1,6 +1,7 @@
 package com.fachrulziyyan.readify;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,16 +40,16 @@ public class MajalahAdapter extends RecyclerView.Adapter<MajalahAdapter.MajalahV
         holder.tvRating.setText(majalah.getRating());
         holder.ivCover.setImageResource(majalah.getImageResId());
 
-        // Menambahkan klik pada item
-//        holder.itemView.setOnClickListener(v -> {
-//            Intent intent = new Intent(context, NovelDetail1.class);
-//            intent.putExtra("TITLE", majalah.getTitle());
-//            intent.putExtra("SUBTITLE", majalah.getSubtitle());
-//            intent.putExtra("PRICE", majalah.getPrice());
-//            intent.putExtra("RATING", majalah.getRating());
-//            intent.putExtra("IMAGE_RES_ID", majalah.getImageResId());
-//            context.startActivity(intent);
-//        });
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, MajalahDetail.class);
+            intent.putExtra("TITLE", majalah.getTitle());
+            intent.putExtra("SUBTITLE", majalah.getSubtitle());
+            intent.putExtra("PRICE", majalah.getPrice());
+            intent.putExtra("RATING", majalah.getRating());
+            intent.putExtra("DESCRIPTION", majalah.getDescription());
+            intent.putExtra("IMAGE_RES_ID", majalah.getImageResId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -67,9 +68,6 @@ public class MajalahAdapter extends RecyclerView.Adapter<MajalahAdapter.MajalahV
             tvSubtitle = itemView.findViewById(R.id.tvSubtitle);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvRating = itemView.findViewById(R.id.tvRating);
-
-
         }
-
     }
 }

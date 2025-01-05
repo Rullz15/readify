@@ -6,13 +6,15 @@ public class Komik {
     private String price;
     private String rating;
     private int imageResId;
+    private String description;
 
-    public Komik(String title, String subtitle, String price, String rating, int imageResId) {
+    public Komik(String title, String subtitle, String price, String rating, int imageResId, String description) {
         this.title = title;
         this.subtitle = subtitle;
         this.price = price;
         this.rating = rating;
         this.imageResId = imageResId;
+        this.description = description;
     }
 
     public String getTitle() {
@@ -33,5 +35,9 @@ public class Komik {
 
     public int getImageResId() {
         return imageResId;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

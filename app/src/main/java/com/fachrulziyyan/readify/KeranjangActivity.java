@@ -1,24 +1,73 @@
 package com.fachrulziyyan.readify;
 
 import android.os.Bundle;
-
-import androidx.activity.EdgeToEdge;
+import android.widget.Button;
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import java.util.ArrayList;
 
-public class KeranjangActivity extends AppCompatActivity {
+public class KeranjangActivity extends AppCompatActivity implements KeranjangAdapter.OnItemActionListener {
+
+    private RecyclerView recyclerView;
+    private TextView tvTotalPrice;
+    private Button btnCheckout;
+
+    private ArrayList<Item> itemList;
+    private int totalItemCount = 0;
+    private int totalPrice = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_keranjang);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+
+        recyclerView = findViewById(R.id.recyclerView);
+        tvTotalPrice = findViewById(R.id.tvTotalPrice);
+        btnCheckout = findViewById(R.id.btnCheckout);
+
+        // Data contoh
+        itemList = new ArrayList<>();
+        itemList.add(new Item("Novel A", 50000, 1));
+        itemList.add(new Item("Novel B", 75000, 2));
+
+        // Setup RecyclerView
+        KeranjangAdapter adapter = new KeranjangAdapter(this, itemList, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(adapter);
+
+        updateTotal();
+    }
+
+    @Override
+    public void onItemChecked(Item item, boolean isChecked) {
+        if (isChecked) {
+            totalItemCount += item.getQuantity();
+            totalPrice += item.getQuantity() * item.getPrice();
+        } else {
+            totalItemCount -= item.getQuantity();
+            totalPrice -= item.getQuantity() * item.getPrice();
+        }
+        updateTotal();
+    }
+
+    @Override
+    public void onQuantityChanged(Item item) {
+        totalPrice = 0;
+        totalItemCount = 0;
+        for (Item i : itemList) {
+            if (i.isChecked()) {
+                totalPrice += i.getPrice() * i.getQuantity();
+                totalItemCount += i.getQuantity();
+            }
+        }
+        updateTotal();
+    }
+
+    private void updateTotal() {
+        tvTotalPrice.setText("Total: Rp " + totalPrice);
+        btnCheckout.setText("Checkout (" + totalItemCount + ")");
+        btnCheckout.setEnabled(totalItemCount > 0);
     }
 }

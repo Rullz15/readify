@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class KomikAdapter extends RecyclerView.Adapter<KomikAdapter.KomikViewHolder> {
+
     private Context context;
     private List<Komik> komikList;
 
@@ -24,13 +25,13 @@ public class KomikAdapter extends RecyclerView.Adapter<KomikAdapter.KomikViewHol
 
     @NonNull
     @Override
-    public KomikAdapter.KomikViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public KomikViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item_komik, parent, false);
-        return new KomikAdapter.KomikViewHolder(view);
+        return new KomikViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull KomikAdapter.KomikViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull KomikViewHolder holder, int position) {
         Komik komik = komikList.get(position);
 
         holder.tvTitle.setText(komik.getTitle());
@@ -39,16 +40,16 @@ public class KomikAdapter extends RecyclerView.Adapter<KomikAdapter.KomikViewHol
         holder.tvRating.setText(komik.getRating());
         holder.ivCover.setImageResource(komik.getImageResId());
 
-        // Menambahkan klik pada item
-//        holder.itemView.setOnClickListener(v -> {
-//            Intent intent = new Intent(context, KomilDetail1.class);
-//            intent.putExtra("TITLE", komik.getTitle());
-//            intent.putExtra("SUBTITLE", komik.getSubtitle());
-//            intent.putExtra("PRICE", komik.getPrice());
-//            intent.putExtra("RATING", komik.getRating());
-//            intent.putExtra("IMAGE_RES_ID", komik.getImageResId());
-//            context.startActivity(intent);
-//        });
+        holder.itemView.setOnClickListener(v -> {
+            Intent intent = new Intent(context, KomikDetail.class);
+            intent.putExtra("TITLE", komik.getTitle());
+            intent.putExtra("SUBTITLE", komik.getSubtitle());
+            intent.putExtra("PRICE", komik.getPrice());
+            intent.putExtra("RATING", komik.getRating());
+            intent.putExtra("DESCRIPTION", komik.getDescription());
+            intent.putExtra("IMAGE_RES_ID", komik.getImageResId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -67,9 +68,6 @@ public class KomikAdapter extends RecyclerView.Adapter<KomikAdapter.KomikViewHol
             tvSubtitle = itemView.findViewById(R.id.tvSubtitle);
             tvPrice = itemView.findViewById(R.id.tvPrice);
             tvRating = itemView.findViewById(R.id.tvRating);
-
-
         }
-
     }
 }

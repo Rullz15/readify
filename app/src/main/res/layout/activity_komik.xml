@@ -1,87 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".KomikActivity"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".KomikActivity">
 
+    <!-- Header Layout -->
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/white"
-        android:gravity="start|center"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <!-- Back Button -->
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            android:contentDescription="Back Button" />
 
-        <!-- Title -->
+        <!-- Header Title -->
         <TextView
             android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:gravity="left"
-            android:text="KOMIK"
-            android:textColor="@android:color/black"
+            android:layout_marginStart="16dp"
+            android:text="Komik"
+            android:textColor="#000000"
             android:textSize="24sp"
             android:textStyle="bold" />
-
-        <!-- Chat Button -->
-        <ImageView
-            android:id="@+id/btnChat"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="right|center"
-            android:layout_marginStart="189dp"
-            android:src="@drawable/ic_chat" />
-
-        <!-- Cart Button -->
-        <ImageView
-            android:id="@+id/btnCart"
-            android:layout_width="32dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right|center"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/ic_cart" />
     </LinearLayout>
 
+    <!-- Produk Count -->
     <TextView
         android:id="@+id/tvJmlProduk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="21dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/poppinsbold"
-        android:text="6 Produk Ditampilkan"
-        android:textColor="@color/black"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
+        android:layout_marginStart="16dp"
+        android:text="0 Produk Ditampilkan"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:fontFamily="@font/poppinssemibold"
+        app:layout_constraintTop_toBottomOf="@id/headerLayout"
+        app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvkomikList"
+        android:id="@+id/rvKomikList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="12dp"
         android:padding="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvJmlProduk"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvJmlProduk" />
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

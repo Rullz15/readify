@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MajalahActivity">
 
+    <!-- Header Layout -->
     <LinearLayout
         android:id="@+id/headerLayout"
         android:layout_width="match_parent"
@@ -15,10 +16,8 @@
         android:background="@color/white"
         android:gravity="start|center"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
 
         <!-- Back Button -->
         <ImageView
@@ -35,30 +34,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:gravity="left"
-            android:text="MAJALAH"
+            android:text="Majalah"
             android:textColor="@android:color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
-
-        <!-- Chat Button -->
-        <ImageView
-            android:id="@+id/btnChat"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="right|center"
-            android:layout_marginStart="150dp"
-            android:src="@drawable/ic_chat" />
-
-        <!-- Cart Button -->
-        <ImageView
-            android:id="@+id/btnCart"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_gravity="right|center"
-            android:layout_marginStart="5dp"
-            android:src="@drawable/ic_cart" />
     </LinearLayout>
 
+    <!-- Produk Count -->
     <TextView
         android:id="@+id/tvJmlProduk"
         android:layout_width="wrap_content"
@@ -66,12 +48,13 @@
         android:layout_marginStart="21dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/poppinsbold"
-        android:text="6 Produk Ditampilkan"
+        android:text="0 Produk Ditampilkan"
         android:textColor="@color/black"
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerLayout" />
 
+    <!-- RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMajalahList"
         android:layout_width="match_parent"
@@ -82,5 +65,4 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvJmlProduk" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
