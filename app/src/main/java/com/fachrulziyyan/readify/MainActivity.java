@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         View layoutKomik = findViewById(R.id.layoutKomik);
         View layoutMajalah = findViewById(R.id.layoutMajalah);
         View layoutPelajaran = findViewById(R.id.layoutPelajaran);
-        View profilIcon = findViewById(R.id.profilIcon);
+
 
         // Navigasi ke halaman NovelActivity
         layoutNovel.setOnClickListener(v -> {
@@ -45,10 +45,6 @@ public class MainActivity extends AppCompatActivity {
         // Tombol Profil
         layoutPelajaran.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, PelajaranActivity.class);
-            startActivity(intent);
-        });
-        profilIcon.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, ProfilActivity.class);
             startActivity(intent);
         });
     }

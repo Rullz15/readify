@@ -6,8 +6,6 @@ import android.text.TextUtils;
 import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,8 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText etEmail, etUsername, etPassword;
-    private ImageView ivShowHidePassword;
+    private EditText inputEmail, inputUser, inputPassword;
     private boolean isPasswordVisible = false;
 
     @Override
@@ -25,10 +22,9 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Inisialisasi elemen UI
-        etEmail = findViewById(R.id.etEmail);
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        ivShowHidePassword = findViewById(R.id.ivShowHidePassword);
+        inputEmail = findViewById(R.id.inputEmail);
+        inputUser = findViewById(R.id.inputUser);
+        inputPassword = findViewById(R.id.inputPassword);
         Button btnRegister = findViewById(R.id.btnRegister);
         Button btnBatal = findViewById(R.id.btnBatal);
         TextView tvLogin = findViewById(R.id.tvLogin);
@@ -38,9 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
 
         // Aksi tombol Batal
         btnBatal.setOnClickListener(v -> clearForm());
-
-        // Aksi untuk toggle password visibility
-        ivShowHidePassword.setOnClickListener(v -> togglePasswordVisibility());
 
         // Aksi untuk navigasi ke LoginActivity
         tvLogin.setOnClickListener(v -> {
@@ -54,9 +47,9 @@ public class RegisterActivity extends AppCompatActivity {
      * Memvalidasi input pengguna dan menampilkan dialog jika berhasil.
      */
     private void validateAndRegister() {
-        String email = etEmail.getText().toString().trim();
-        String username = etUsername.getText().toString().trim();
-        String password = etPassword.getText().toString().trim();
+        String email = inputEmail.getText().toString().trim();
+        String username = inputUser.getText().toString().trim();
+        String password = inputPassword.getText().toString().trim();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
             showAlert("Input tidak boleh kosong!", false);
@@ -91,23 +84,8 @@ public class RegisterActivity extends AppCompatActivity {
      * Membersihkan form input.
      */
     private void clearForm() {
-        etEmail.setText("");
-        etUsername.setText("");
-        etPassword.setText("");
-    }
-
-    /**
-     * Mengatur visibilitas password.
-     */
-    private void togglePasswordVisibility() {
-        if (isPasswordVisible) {
-            etPassword.setInputType(129); // TYPE_TEXT_VARIATION_PASSWORD
-            ivShowHidePassword.setImageResource(R.drawable.show);
-        } else {
-            etPassword.setInputType(144); // TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-            ivShowHidePassword.setImageResource(R.drawable.hide);
-        }
-        etPassword.setSelection(etPassword.getText().length());
-        isPasswordVisible = !isPasswordVisible;
+        inputEmail.setText("");
+        inputUser.setText("");
+        inputPassword.setText("");
     }
 }
